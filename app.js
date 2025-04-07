@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Hello from Dockerized Node.js App!');
+  res.send('Hello from CI/CD Pipeline!');
 });
 
 const PORT = 3000;
