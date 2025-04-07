@@ -12,10 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print Node.js and npm version
-        run: |
-          node -v
-          npm -v
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
@@ -30,9 +30,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Debug - Show Docker username (check if secret is working)
-        run: echo "DOCKER_USERNAME is: ${{ secrets.DOCKER_USERNAME }}"
-
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/nodejs-demo-app:latest .
 
@@ -46,6 +43,6 @@ jobs:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
-      - name: Dummy Deploy Step (optional)
-        run: echo "Deploy step would go here if server is available"
-  
+      - name: Dummy Deploy Step
+        run: echo "Deploy step would go here"
+
