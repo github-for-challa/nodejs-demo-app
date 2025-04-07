@@ -25,6 +25,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Print Docker username
+        run: echo "Docker Username: ${{ secrets.DOCKER_USERNAME }}"
+
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/nodejs-demo-app:version_1 .
 
@@ -40,4 +43,3 @@ jobs:
     steps:
       - name: Dummy Deploy Step (optional)
         run: echo "Deploy step would go here if server is available"
-
