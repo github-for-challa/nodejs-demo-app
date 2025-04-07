@@ -12,6 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Print Node.js and npm version
+        run: |
+          node -v
+          npm -v
+
       - name: Install dependencies
         run: npm install
 
@@ -24,9 +29,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Debug username
-        run: echo "Using Docker tag: ${{ secrets.DOCKER_USERNAME }}/nodejs-demo-app:latest"
 
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/nodejs-demo-app:latest .
